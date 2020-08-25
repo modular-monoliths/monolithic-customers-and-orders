@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "com.avast.gradle:gradle-docker-compose-plugin:0.12.0"
+    }
+}
+
+apply plugin: 'docker-compose'
+
+subprojects {
+
+    apply plugin: "java"
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://dl.bintray.com/eventuateio-oss/eventuate-maven-release"
+        }
+        eventuateMavenRepoUrl.split(',').each { repoUrl -> maven { url repoUrl } }
+    }
+
+    dependencies {
+        implementation(platform("io.eventuate.platform:eventuate-platform-dependencies:$eventuatePlatformVersion"))
+    }
+
+}
+
+dockerCompose {
+    environment.put "EVENTUATE_COMMON_VERSION", eventuateCommonImageVersion
+    environment.put "EVENTUATE_CDC_VERSION", eventuateCdcImageVersion
+    environment.put "EVENTUATE_CDC_KAFKA_ENABLE_BATCH_PROCESSING", eventuateCdcKafkaEnableBatchProcessing
+    environment.put "EVENTUATE_JAVA_BASE_IMAGE_VERSION", eventuateExamplesBaseImageVersion
+    removeOrphans = true
+
+    mysql {
+        projectName = null
+        removeContainers = project.ext.removeContainers
+        startedServices = ["mysql"]
+    }
+
+    application {
+        projectName = null
+        removeContainers = project.ext.removeContainers
+    }
+
+}

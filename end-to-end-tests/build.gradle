@@ -1,0 +1,8 @@
+dependencies {
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testCompile "org.springframework.boot:spring-boot-starter-json:$springBootVersion"
+
+    testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
+
+}
+

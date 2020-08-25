@@ -1,0 +1,6 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile project(":web")
+    compile project(":common-swagger")
+}

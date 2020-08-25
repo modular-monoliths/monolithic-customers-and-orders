@@ -1,0 +1,7 @@
+include 'common-swagger'
+
+include 'domain'
+include 'web'
+include 'application'
+include 'end-to-end-tests'
+

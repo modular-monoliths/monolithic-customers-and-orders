@@ -1,0 +1,10 @@
+= Monolithic Customers and Orders
+
+This is the monolithic version of my customers and orders example.
+Its monolithic architecture consists of the following layers:
+
+* domain - business logic and Spring Data-based persistence
+* web - HTTP controllers
+
+
+
