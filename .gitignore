@@ -1,0 +1,10 @@
+.gradle
+build/
+target/
+*.idea/
+*.iml
+*.log
+.terraform*
+terraform.tfstate*
+out
+.DS_Store
