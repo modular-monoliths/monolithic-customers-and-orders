@@ -1,7 +1,7 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orders;
 
 
-import net.chrisrichardson.monolithic.customersandorders.domain.Money;;
+import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;;
 
 public class CreateOrderRequest {
   private Money orderTotal;

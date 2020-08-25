@@ -1,7 +1,8 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.customers;
+
+import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
 
 import javax.persistence.*;
-import java.util.Collections;
 
 @Entity
 @Table(name="Customer")

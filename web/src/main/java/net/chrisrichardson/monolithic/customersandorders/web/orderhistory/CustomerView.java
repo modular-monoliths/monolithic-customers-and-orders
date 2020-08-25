@@ -1,6 +1,6 @@
-package net.chrisrichardson.monolithic.customersandorders.web.orders;
+package net.chrisrichardson.monolithic.customersandorders.web.orderhistory;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
 
 import java.util.HashMap;
 import java.util.List;

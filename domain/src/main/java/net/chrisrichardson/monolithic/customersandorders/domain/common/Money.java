@@ -1,4 +1,4 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.common;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

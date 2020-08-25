@@ -1,5 +1,8 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.orders;
 
+
+import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
 
 import javax.persistence.*;
 
@@ -15,8 +18,7 @@ public class Order {
   @Enumerated(EnumType.STRING)
   private OrderState state;
 
-  @ManyToOne
-  private Customer customer;
+  private long customerId;
 
   @Embedded
   private Money orderTotal;
@@ -27,15 +29,15 @@ public class Order {
   private Order() {
   }
 
-  public Order(Customer customer, Money orderTotal) {
-    this.customer = customer;
+  public Order(long customerId, Money orderTotal) {
+    this.customerId = customerId;
     this.orderTotal = orderTotal;
     this.state = OrderState.APPROVED;
   }
 
 
-  public static Order createOrder(Money orderTotal, Customer customer) {
-    Order order = new Order(customer, orderTotal);
+  public static Order createOrder(Money orderTotal, long customerId) {
+    Order order = new Order(customerId, orderTotal);
     return order;
   }
 
@@ -47,8 +49,8 @@ public class Order {
     return state;
   }
 
-  public Customer getCustomer() {
-    return customer;
+  public long getCustomerId() {
+    return customerId;
   }
 
   public Money getOrderTotal() {
@@ -62,7 +64,6 @@ public class Order {
   public void cancel() {
     if (state == OrderState.APPROVED) {
       this.state = OrderState.CANCELLED;
-      customer.unreserveCredit(orderTotal);
       return;
     }
     throw new UnsupportedOperationException("Can't cancel in this state: " + state);
