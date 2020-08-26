@@ -1,7 +1,12 @@
+
+include 'common'
+include 'customer-management'
+include 'customer-management-api'
+include 'order-management-api'
+include 'order-management'
+include 'order-history'
+
 include 'common-swagger'
 
-include 'domain'
-include 'web'
 include 'application'
 include 'end-to-end-tests'
-

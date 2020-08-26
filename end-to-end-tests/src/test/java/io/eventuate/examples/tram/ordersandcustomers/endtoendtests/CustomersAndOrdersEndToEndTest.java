@@ -38,6 +38,13 @@ public class CustomersAndOrdersEndToEndTest {
   }
 
   @Test
+  public void shouldApproveInOrderHistory() {
+    long customerId = createCustomer("Fred", new BigDecimal("15.00"));
+    long orderId = createOrder(customerId, new BigDecimal("12.34"));
+    assertStateInOrderHistory(customerId, orderId, "APPROVED");
+  }
+
+  @Test
   public void shouldReject() {
     long customerId = createCustomer("Fred", new BigDecimal("15.00"));
     createOrderExpecting(customerId, new BigDecimal("123.34"), HttpStatus.CONFLICT);
@@ -163,5 +170,18 @@ public class CustomersAndOrdersEndToEndTest {
             body("orderState", equalTo(expectedState))
             ;
   }
+
+  private void assertStateInOrderHistory(long customerId, long orderId, String expectedState) {
+    given().
+            contentType(JSON).
+            when().
+            get(baseUrl("customers", Long.toString(customerId))).
+            then().
+            statusCode(200).
+            body(String.format("orders['%s'].state", orderId), equalTo(expectedState))
+    ;
+  }
+
+
 
 }

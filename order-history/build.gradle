@@ -1,0 +1,12 @@
+dependencies {
+
+    compile project(":customer-management-api")
+    compile project(":order-management-api")
+
+    compile "commons-lang:commons-lang:2.6"
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
+
+}

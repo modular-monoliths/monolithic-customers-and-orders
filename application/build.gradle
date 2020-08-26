@@ -1,6 +1,9 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    compile project(":web")
     compile project(":common-swagger")
+    compile project(":customer-management")
+    compile project(":order-management")
+    compile project(":order-history")
+    compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
 }
