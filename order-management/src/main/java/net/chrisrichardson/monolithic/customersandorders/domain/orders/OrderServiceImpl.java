@@ -1,6 +1,6 @@
 package net.chrisrichardson.monolithic.customersandorders.domain.orders;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.AvailableCreditManagement;
 import net.chrisrichardson.monolithic.customersandorders.web.orderhistory.OrderView;
 import net.chrisrichardson.monolithic.customersandorders.web.orderhistory.OrderViewRepository;

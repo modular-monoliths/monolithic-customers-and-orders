@@ -1,6 +1,6 @@
 package net.chrisrichardson.monolithic.customersandorders.domain.orders;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;

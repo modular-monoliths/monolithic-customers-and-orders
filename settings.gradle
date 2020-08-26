@@ -1,5 +1,5 @@
 
-include 'common'
+include 'money'
 include 'customer-management'
 include 'customer-management-api'
 include 'order-management-api'

@@ -1,5 +1,5 @@
-package net.chrisrichardson.monolithic.customersandorders.domain.common;
 
+package net.chrisrichardson.monolithic.customersandorders.domain.money;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;

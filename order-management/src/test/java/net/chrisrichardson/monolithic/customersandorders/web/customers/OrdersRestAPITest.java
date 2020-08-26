@@ -1,7 +1,7 @@
 package net.chrisrichardson.monolithic.customersandorders.web.customers;
 
 import io.restassured.response.ValidatableResponse;
-import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.AvailableCreditManagement;
 import net.chrisrichardson.monolithic.customersandorders.web.orders.OrdersWebConfiguration;
 import org.junit.Test;

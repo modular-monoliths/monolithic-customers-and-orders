@@ -1,6 +1,6 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orderhistory;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerDetails;
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerDetailsRepository;
 import org.junit.Test;
