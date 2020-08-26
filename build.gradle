@@ -31,10 +31,6 @@ subprojects {
         eventuateMavenRepoUrl.split(',').each { repoUrl -> maven { url repoUrl } }
     }
 
-    dependencies {
-        implementation(platform("io.eventuate.platform:eventuate-platform-dependencies:$eventuatePlatformVersion"))
-    }
-
 }
 
 allprojects {
@@ -43,8 +39,6 @@ allprojects {
 
 dockerCompose {
     environment.put "EVENTUATE_COMMON_VERSION", eventuateCommonImageVersion
-    environment.put "EVENTUATE_CDC_VERSION", eventuateCdcImageVersion
-    environment.put "EVENTUATE_CDC_KAFKA_ENABLE_BATCH_PROCESSING", eventuateCdcKafkaEnableBatchProcessing
     environment.put "EVENTUATE_JAVA_BASE_IMAGE_VERSION", eventuateExamplesBaseImageVersion
     removeOrphans = true
 
