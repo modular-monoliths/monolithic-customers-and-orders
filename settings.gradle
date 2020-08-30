@@ -10,3 +10,4 @@ include 'common-swagger'
 
 include 'application'
 include 'end-to-end-tests'
+

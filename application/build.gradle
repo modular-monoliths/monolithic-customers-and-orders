@@ -6,4 +6,8 @@ dependencies {
     compile project(":order-management")
     compile project(":order-history")
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
+
 }
