@@ -1,6 +1,7 @@
 package net.chrisrichardson.monolithic.customersandorders.domain.customers;
 
 import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerCreditLimitExceededException;
 
 import javax.persistence.*;
 

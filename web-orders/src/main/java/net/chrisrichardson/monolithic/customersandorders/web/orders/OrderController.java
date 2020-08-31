@@ -1,9 +1,8 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orders;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.customers.CustomerCreditLimitExceededException;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderState;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDetails;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerCreditLimitExceededException;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderRepository;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDetails;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDto;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,10 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    compile project(":web")
+    compile project(":web-customers")
+    compile project(":web-orders")
+    compile project(":web-order-history")
+
     compile project(":common-swagger")
 
     compile project(":domain-customers")

@@ -6,7 +6,10 @@ include 'domain-customers'
 include 'domain-orders-api'
 include 'domain-orders'
 
-include 'web'
+include 'web-customers'
+include 'web-orders'
+include 'web-order-history'
+
 include 'application'
 include 'end-to-end-tests'
 
