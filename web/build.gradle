@@ -1,5 +1,6 @@
 dependencies {
-    compile project(":domain")
+    compile project(":domain-customers")
+    compile project(":domain-orders")
 
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"

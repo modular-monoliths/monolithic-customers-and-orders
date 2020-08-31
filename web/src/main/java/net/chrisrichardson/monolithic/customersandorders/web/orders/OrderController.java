@@ -1,9 +1,10 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orders;
 
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.CustomerCreditLimitExceededException;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.Order;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderDetails;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderState;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDetails;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderRepository;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDto;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class OrderController {
   @RequestMapping(value = "/orders", method = RequestMethod.POST)
   public ResponseEntity<CreateOrderResponse> createOrder(@RequestBody CreateOrderRequest createOrderRequest) {
     try {
-      Order order = orderService.createOrder(new OrderDetails(createOrderRequest.getCustomerId(), createOrderRequest.getOrderTotal()));
+      OrderDto order = orderService.createOrder(new OrderDetails(createOrderRequest.getCustomerId(), createOrderRequest.getOrderTotal()));
       return ResponseEntity.ok(new CreateOrderResponse(order.getId()));
     } catch (ObjectRetrievalFailureException e) {
       return ResponseEntity.notFound().build();
@@ -41,17 +42,17 @@ public class OrderController {
   public ResponseEntity<GetOrderResponse> getOrder(@PathVariable Long orderId) {
      return orderRepository
             .findById(orderId)
-            .map(this::makeSuccessfulResponse)
+            .map(order -> makeSuccessfulResponse(order.getId(), order.getState().name()))
             .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
   @RequestMapping(value="/orders/{orderId}/cancel", method= RequestMethod.POST)
   public ResponseEntity<GetOrderResponse> cancelOrder(@PathVariable Long orderId) {
-     Order order = orderService.cancelOrder(orderId);
-     return makeSuccessfulResponse(order);
+     OrderDto order = orderService.cancelOrder(orderId);
+     return makeSuccessfulResponse(order.getId(), order.getState());
   }
 
-  private ResponseEntity<GetOrderResponse> makeSuccessfulResponse(Order order) {
-    return new ResponseEntity<>(new GetOrderResponse(order.getId(), order.getState()), HttpStatus.OK);
+  private ResponseEntity<GetOrderResponse> makeSuccessfulResponse(Long orderId, String state) {
+    return new ResponseEntity<>(new GetOrderResponse(orderId, state), HttpStatus.OK);
   }
 }

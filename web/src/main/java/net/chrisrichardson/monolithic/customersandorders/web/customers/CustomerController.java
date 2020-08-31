@@ -1,6 +1,6 @@
 package net.chrisrichardson.monolithic.customersandorders.web.customers;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerDto;
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +21,7 @@ public class CustomerController {
 
   @RequestMapping(value = "/customers", method = RequestMethod.POST)
   public CreateCustomerResponse createCustomer(@RequestBody CreateCustomerRequest createCustomerRequest) {
-    Customer customer = CustomerService.createCustomer(createCustomerRequest.getName(), createCustomerRequest.getCreditLimit());
+    CustomerDto customer = CustomerService.createCustomer(createCustomerRequest.getName(), createCustomerRequest.getCreditLimit());
     return new CreateCustomerResponse(customer.getId());
   }
 

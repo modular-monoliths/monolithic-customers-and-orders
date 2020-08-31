@@ -1,0 +1,4 @@
+dependencies {
+    compile project(":domain-orders-api")
+    compile project(":domain-customers-api")
+}

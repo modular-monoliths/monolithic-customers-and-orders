@@ -1,16 +1,11 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orders;
 
 
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderState;
-
 public class GetOrderResponse {
   private Long orderId;
-  private OrderState orderState;
+  private String orderState;
 
-  public GetOrderResponse() {
-  }
-
-  public GetOrderResponse(Long orderId, OrderState orderState) {
+  public GetOrderResponse(Long orderId, String orderState) {
     this.orderId = orderId;
     this.orderState = orderState;
   }
@@ -23,11 +18,11 @@ public class GetOrderResponse {
     this.orderId = orderId;
   }
 
-  public OrderState getOrderState() {
+  public String getOrderState() {
     return orderState;
   }
 
-  public void setOrderState(OrderState orderState) {
+  public void setOrderState(String orderState) {
     this.orderState = orderState;
   }
 }

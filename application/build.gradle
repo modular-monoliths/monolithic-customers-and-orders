@@ -3,4 +3,7 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     compile project(":web")
     compile project(":common-swagger")
+
+    compile project(":domain-customers")
+    compile project(":domain-orders")
 }

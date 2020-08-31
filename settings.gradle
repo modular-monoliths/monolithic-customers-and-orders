@@ -1,6 +1,11 @@
 include 'common-swagger'
 
-include 'domain'
+include 'domain-common'
+include 'domain-customers-api'
+include 'domain-customers'
+include 'domain-orders-api'
+include 'domain-orders'
+
 include 'web'
 include 'application'
 include 'end-to-end-tests'
