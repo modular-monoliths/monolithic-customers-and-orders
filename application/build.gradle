@@ -11,3 +11,8 @@ dependencies {
     testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
 
 }
+
+test.mustRunAfter ":customer-management:test"
+test.mustRunAfter ":order-management:test"
+test.mustRunAfter ":order-history:test"
+test.mustRunAfter ":money:test"
