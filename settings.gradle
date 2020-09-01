@@ -1,7 +1,14 @@
 include 'common-swagger'
 
+include 'domain-money'
+include 'domain-customers'
+include 'domain-orders'
 include 'domain'
-include 'web'
+
+include 'web-customers'
+include 'web-orders'
+include 'web-order-history'
+
 include 'application'
 include 'end-to-end-tests'
 

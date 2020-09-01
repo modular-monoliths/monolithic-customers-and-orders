@@ -1,6 +1,10 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    compile project(":web")
+    compile project(":web-customers")
+    compile project(":web-orders")
+    compile project(":web-order-history")
+
+    compile 'mysql:mysql-connector-java:5.1.36'
     compile project(":common-swagger")
 }
