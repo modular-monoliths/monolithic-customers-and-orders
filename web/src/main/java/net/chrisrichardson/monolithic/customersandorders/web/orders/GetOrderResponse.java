@@ -1,7 +1,7 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orders;
 
 
-import net.chrisrichardson.monolithic.customersandorders.domain.OrderState;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderState;
 
 public class GetOrderResponse {
   private Long orderId;

@@ -1,5 +1,6 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.orders;
 
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;

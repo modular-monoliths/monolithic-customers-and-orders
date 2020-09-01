@@ -12,7 +12,7 @@ services:
 
   application:
     build:
-      context: ./application/
+      context: ./web/
       args:
         baseImageVersion: ${EVENTUATE_JAVA_BASE_IMAGE_VERSION?}
     ports:

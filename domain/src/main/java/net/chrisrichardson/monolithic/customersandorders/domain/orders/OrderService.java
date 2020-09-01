@@ -1,6 +1,7 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.orders;
 
-import org.springframework.dao.DataAccessException;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.CustomerRepository;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.transaction.annotation.Transactional;
 

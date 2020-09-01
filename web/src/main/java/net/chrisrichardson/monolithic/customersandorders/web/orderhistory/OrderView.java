@@ -1,7 +1,7 @@
-package net.chrisrichardson.monolithic.customersandorders.web.orders;
+package net.chrisrichardson.monolithic.customersandorders.web.orderhistory;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.Money;
-import net.chrisrichardson.monolithic.customersandorders.domain.OrderState;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderState;
 
 public class OrderView {
 

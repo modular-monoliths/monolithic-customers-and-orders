@@ -1,6 +1,6 @@
 package net.chrisrichardson.monolithic.customersandorders.web.customers;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.Money;;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;;
 
 public class CreateCustomerRequest {
   private String name;

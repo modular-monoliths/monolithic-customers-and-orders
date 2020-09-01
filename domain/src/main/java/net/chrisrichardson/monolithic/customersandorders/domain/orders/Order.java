@@ -1,5 +1,8 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.orders;
 
+
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
 
 import javax.persistence.*;
 

@@ -1,5 +1,6 @@
-package net.chrisrichardson.monolithic.customersandorders.domain;
+package net.chrisrichardson.monolithic.customersandorders.domain.customers;
 
+import net.chrisrichardson.monolithic.customersandorders.domain.money.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

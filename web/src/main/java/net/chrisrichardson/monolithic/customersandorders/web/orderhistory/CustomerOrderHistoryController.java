@@ -1,9 +1,9 @@
-package net.chrisrichardson.monolithic.customersandorders.web.orders;
+package net.chrisrichardson.monolithic.customersandorders.web.orderhistory;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.Customer;
-import net.chrisrichardson.monolithic.customersandorders.domain.CustomerRepository;
-import net.chrisrichardson.monolithic.customersandorders.domain.Order;
-import net.chrisrichardson.monolithic.customersandorders.domain.OrderRepository;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.CustomerRepository;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.Order;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package net.chrisrichardson.monolithic.customersandorders.application;
+package et.chrisrichardson.monolithic.customersandorders.application;
 
 import io.eventuate.examples.tram.ordersandcustomers.commonswagger.CommonSwaggerConfiguration;
 import net.chrisrichardson.monolithic.customersandorders.web.WebConfiguration;

@@ -1,7 +1,7 @@
 package net.chrisrichardson.monolithic.customersandorders.web.customers;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.Customer;
-import net.chrisrichardson.monolithic.customersandorders.domain.CustomerService;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
