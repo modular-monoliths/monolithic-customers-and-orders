@@ -6,14 +6,12 @@ import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrdersDom
 import net.chrisrichardson.monolithic.customersandorders.web.customers.CustomersWebConfiguration;
 import net.chrisrichardson.monolithic.customersandorders.web.orderhistory.OrderHistoryWebConfiguration;
 import net.chrisrichardson.monolithic.customersandorders.web.orders.OrdersWebConfiguration;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-@SpringBootApplication
-@Import(CustomersDomainConfiguration.class)
-public class CustomersAndOrdersMain {
-  public static void main(String[] args) {
-    SpringApplication.run(CustomersAndOrdersMain.class, args);
-  }
+@Configuration
+@Import({CustomersWebConfiguration.class, OrdersWebConfiguration.class, OrderHistoryWebConfiguration.class,
+        CustomersDomainConfiguration.class, OrdersDomainConfiguration.class,
+        CommonSwaggerConfiguration.class})
+public class CustomersAndOrdersConfiguration {
 }

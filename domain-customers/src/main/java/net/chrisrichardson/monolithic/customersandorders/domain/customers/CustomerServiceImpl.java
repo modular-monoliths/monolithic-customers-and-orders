@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.orm.ObjectRetrievalFailureException;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 public class CustomerServiceImpl implements CustomerService {
 
@@ -24,7 +25,11 @@ public class CustomerServiceImpl implements CustomerService {
   public CustomerDto createCustomer(String name, Money creditLimit) {
     Customer customer = Customer.create(name, creditLimit);
     customer = customerRepository.save(customer);
-    return new CustomerDto(customer.getId());
+    return makeCustomerDto(customer);
+  }
+
+  private CustomerDto makeCustomerDto(Customer customer) {
+    return new CustomerDto(customer.getId(), customer.getName(), customer.getCreditLimit());
   }
 
   @Override
@@ -44,5 +49,10 @@ public class CustomerServiceImpl implements CustomerService {
     Customer customer = findCustomer(customerId);
     customer.unreserveCredit(orderTotal);
 
+  }
+
+  @Override
+  public Optional<CustomerDto> findById(long customerId) {
+    return customerRepository.findById(customerId).map(this::makeCustomerDto);
   }
 }

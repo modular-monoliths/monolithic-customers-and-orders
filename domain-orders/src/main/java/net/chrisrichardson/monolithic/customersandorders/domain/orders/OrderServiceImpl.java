@@ -7,6 +7,10 @@ import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.Order
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderService;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 public class OrderServiceImpl implements OrderService {
 
   private final OrderRepository orderRepository;
@@ -26,9 +30,12 @@ public class OrderServiceImpl implements OrderService {
     customerService.reserveCredit(customerId, orderTotal);
     Order order = Order.createOrder(orderTotal, customerId);
     orderRepository.save(order);
-    return new OrderDto(order.getId(), order.getState().name());
+    return makeOrderDto(order);
   }
 
+  private OrderDto makeOrderDto(Order order) {
+    return new OrderDto(order.getId(), order.getState().name());
+  }
 
 
   @Override
@@ -39,6 +46,16 @@ public class OrderServiceImpl implements OrderService {
             .orElseThrow(() -> new IllegalArgumentException(String.format("order with id %s not found", orderId)));
     order.cancel();
     customerService.unreserveCredit(order.getCustomerId(), order.getOrderTotal());
-    return new OrderDto(order.getId(), order.getState().name());
+    return makeOrderDto(order);
+  }
+
+  @Override
+  public Optional<OrderDto> findById(long orderId) {
+    return orderRepository.findById(orderId).map(this::makeOrderDto);
+  }
+
+  @Override
+  public List<OrderDto> findByCustomerId(long customerId) {
+    return orderRepository.findByCustomerId(customerId).stream().map(this::makeOrderDto).collect(Collectors.toList());
   }
 }

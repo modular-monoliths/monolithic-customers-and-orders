@@ -1,9 +1,9 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orderhistory;
 
-import net.chrisrichardson.monolithic.customersandorders.domain.customers.Customer;
-import net.chrisrichardson.monolithic.customersandorders.domain.customers.CustomerRepository;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.Order;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderRepository;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerDto;
+import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerService;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDto;
+import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,32 +18,33 @@ import java.util.stream.Collectors;
 @RestController
 public class CustomerOrderHistoryController {
 
-  private final CustomerRepository customerRepository;
-  private final OrderRepository orderRepository;
+  private final CustomerService customerService;
+  private final OrderService orderService;
 
   @Autowired
-  public CustomerOrderHistoryController(CustomerRepository customerRepository, OrderRepository orderRepository) {
-    this.customerRepository = customerRepository;
-    this.orderRepository = orderRepository;
+  public CustomerOrderHistoryController(CustomerService customerService, OrderService orderService) {
+    this.customerService = customerService;
+    this.orderService = orderService;
   }
+
 
   @RequestMapping(value="/customers/{customerId}", method= RequestMethod.GET)
   public ResponseEntity<CustomerView> getCustomer(@PathVariable Long customerId) {
-    return customerRepository
+    return customerService
             .findById(customerId)
             .map(customer -> {
-              List<Order> orders = orderRepository.findByCustomerId(customer.getId());
-              return new ResponseEntity<CustomerView>(makeCustomerView(customer, orders), HttpStatus.OK);
+              List<OrderDto> orders = orderService.findByCustomerId(customer.getId());
+              return new ResponseEntity<>(makeCustomerView(customer, orders), HttpStatus.OK);
             })
             .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
-  private CustomerView makeCustomerView(Customer customer, List<Order> orders) {
+  private CustomerView makeCustomerView(CustomerDto customer, List<OrderDto> orders) {
     return new CustomerView(customer.getName(), customer.getCreditLimit(),
             orders.stream().map(CustomerOrderHistoryController::makeOrderView).collect(Collectors.toList()));
   }
 
-  private static OrderView makeOrderView(Order order) {
+  private static OrderView makeOrderView(OrderDto order) {
     return new OrderView(order.getId(), order.getState(), order.getOrderTotal());
   }
 

@@ -1,18 +1,17 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orderhistory;
 
 import net.chrisrichardson.monolithic.customersandorders.domain.common.Money;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderState;
 
 public class OrderView {
 
   private Long id;
-  private OrderState state;
+  private String state;
   private Money orderTotal;
 
   public OrderView() {
   }
 
-  public OrderView(Long id, OrderState state, Money orderTotal) {
+  public OrderView(Long id, String state, Money orderTotal) {
     this.id = id;
     this.orderTotal = orderTotal;
     this.state = state;
@@ -26,7 +25,7 @@ public class OrderView {
     return orderTotal;
   }
 
-  public OrderState getState() {
+  public String getState() {
     return state;
   }
 

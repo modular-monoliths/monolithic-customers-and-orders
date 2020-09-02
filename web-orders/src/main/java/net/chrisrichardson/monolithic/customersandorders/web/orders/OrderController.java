@@ -1,7 +1,6 @@
 package net.chrisrichardson.monolithic.customersandorders.web.orders;
 
 import net.chrisrichardson.monolithic.customersandorders.domain.customers.api.CustomerCreditLimitExceededException;
-import net.chrisrichardson.monolithic.customersandorders.domain.orders.OrderRepository;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDetails;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderDto;
 import net.chrisrichardson.monolithic.customersandorders.domain.orders.api.OrderService;
@@ -15,14 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
   private OrderService orderService;
-  private OrderRepository orderRepository;
 
   @Autowired
-  public OrderController(OrderService orderService,
-                         OrderRepository orderRepository) {
+  public OrderController(OrderService orderService) {
 
     this.orderService = orderService;
-    this.orderRepository = orderRepository;
   }
 
   @RequestMapping(value = "/orders", method = RequestMethod.POST)
@@ -39,9 +35,9 @@ public class OrderController {
 
   @RequestMapping(value="/orders/{orderId}", method= RequestMethod.GET)
   public ResponseEntity<GetOrderResponse> getOrder(@PathVariable Long orderId) {
-     return orderRepository
+     return orderService
             .findById(orderId)
-            .map(order -> makeSuccessfulResponse(order.getId(), order.getState().name()))
+            .map(order -> makeSuccessfulResponse(order.getId(), order.getState()))
             .orElseGet(() -> ResponseEntity.notFound().build());
   }
 

@@ -6,3 +6,4 @@ dependencies {
 
 }
 
+test.mustRunAfter(":application:test")
